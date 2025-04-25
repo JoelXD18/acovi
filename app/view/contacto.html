@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es" class="<?php echo $currentTheme === 'dark' ? 'dark' : ''; ?>">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacto - Ayuntamiento Villanueva de la Cañada</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'primary': '#10B981', // Verde
+            'primary-dark': '#059669',
+            'secondary': '#4B5563', // Gris
+            'tertiary': '#4F46E5', // Índigo
+          },
+          boxShadow: {
+            'card': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+            'card-hover': '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
+          },
+          transitionProperty: {
+            'height': 'height',
+            'spacing': 'margin, padding',
+          },
+          animation: {
+            'modal-in': 'modalIn 0.3s ease-out forwards',
+            'fade-in': 'fadeIn 0.3s ease-in-out',
+            'slide-up': 'slideUp 0.3s ease-out',
+            'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+          },
+          keyframes: {
+            modalIn: {
+              '0%': { opacity: 0, transform: 'scale(0.95)' },
+              '100%': { opacity: 1, transform: 'scale(1)' }
+            },
+            fadeIn: {
+              '0%': { opacity: 0 },
+              '100%': { opacity: 1 }
+            },
+            slideUp: {
+              '0%': { transform: 'translateY(10px)', opacity: 0 },
+              '100%': { transform: 'translateY(0)', opacity: 1 }
+            }
+          }
+        }
+      },
+      darkMode: 'class' // Habilitamos modo oscuro
+    }
+  </script>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 transition-colors duration-200 min-h-screen flex flex-col">
+  <!-- Contenido principal -->
+  <main class="flex items-center justify-center flex-1">
+    <div class="bg-white shadow-lg rounded-xl p-8 w-full max-w-3xl">
+      <div class="flex flex-col md:flex-row items-center md:items-start gap-6">
+        <img src="assets/img/MT_logo_vertical_1-400x400-removebg-preview.png" alt="Escudo VC" class="h-24 md:h-32">
+        <div class="text-center md:text-left">
+          <h1 class="text-2xl font-semibold text-gray-800 mb-1">IZASKUN OSÉS MÚGICA</h1>
+          <p class="text-gray-600 font-medium">Técnico de Desarrollo Local, Economía, Formación y Empleo</p>
+          <p class="text-gray-700 mt-3">Ayuntamiento de Villanueva de la Cañada</p>
+          <div class="mt-4 space-y-2">
+            <p><span class="font-semibold">Tel.:</span> 91 811 73 00 <span class="text-gray-500">Ext. 467</span></p>
+            <p><span class="font-semibold">Correo:</span> <a href="mailto:ioses@ayto-villacanada.es" class="text-blue-600 hover:underline">ioses@ayto-villacanada.es</a></p>
+            <p><span class="font-semibold">Web:</span> <a href="https://www.ayto-villacanada.es" class="text-blue-600 hover:underline" target="_blank">www.ayto-villacanada.es</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <!-- Footer con cambio de tema -->
+  <footer class="bg-white dark:bg-gray-800 shadow mt-auto transition-colors duration-200">
+    <div class="max-w-screen-xl mx-auto px-6 py-8">
+      <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between text-center sm:text-left">
+        <a href="#" class="flex flex-col sm:flex-row items-center mb-4 sm:mb-0 space-y-2 sm:space-y-0 sm:space-x-3">
+          <img src="assets/img/logo.png.png" class="h-10 sm:h-8 mx-auto sm:mx-0" alt="Logo Ayuntamiento" />
+          <span class="text-lg font-semibold text-gray-900 dark:text-white">Ayuntamiento Villanueva de la Cañada</span>
+        </a>
+        <ul class="flex flex-col sm:flex-row flex-wrap items-center text-sm font-medium text-gray-500 dark:text-gray-400 space-y-2 sm:space-y-0 sm:space-x-6">
+          <li><a href="#" class="hover:text-green-600 dark:hover:text-green-400 transition-colors">Política de Privacidad</a></li>
+          <li><a href="https://www.ayto-villacanada.es/aviso-legal" class="hover:text-green-600 dark:hover:text-green-400 transition-colors">Aviso Legal</a></li>
+          <li><a href="contacto.html" class="hover:text-green-600 dark:hover:text-green-400 transition-colors">Contacto</a></li>
+        </ul>
+      </div>
+      <hr class="my-6 border-gray-200 dark:border-gray-700 sm:mx-auto lg:my-8" />
+      <span class="block text-sm text-gray-500 dark:text-gray-400 text-center">
+        © <?php echo date('Y'); ?> <a href="https://www.ayto-villacanada.es/" class="hover:text-green-600 dark:hover:text-green-400 transition-colors">Ayuntamiento Villanueva de la Cañada</a>. Todos los derechos reservados.
+      </span>
+    </div>
+  </footer>
+  <!-- Script para el modo oscuro -->
+  <script>
+    // Función para alternar el modo oscuro
+    function toggleDarkMode() {
+      const isDarkMode = document.documentElement.classList.toggle('dark');
+      localStorage.setItem('darkMode', isDarkMode ? 'dark' : 'light');
+      // Enviar al servidor para persistencia entre páginas
+      const currentUrl = new URL(window.location.href);
+      currentUrl.searchParams.set('theme', isDarkMode ? 'dark' : 'light');
+      fetch(currentUrl.toString(), { method: 'HEAD' });
+    }
+
+    // Inicialización de tema según localStorage o preferencia del sistema
+    document.addEventListener('DOMContentLoaded', () => {
+      // Cargar preferencia guardada
+      const savedTheme = localStorage.getItem('darkMode');
+      // Detectar preferencia del sistema si no hay nada guardado
+      if (savedTheme === null) {
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          document.documentElement.classList.add('dark');
+          localStorage.setItem('darkMode', 'dark');
+        }
+      } else if (savedTheme === 'dark') {
+        document.documentElement.classList.add('dark');
+      }
+      // Sincronizar el estado de los switchs con el tema actual
+      const isDark = document.documentElement.classList.contains('dark');
+      document.getElementById('theme-toggle').checked = isDark;
+      if (document.getElementById('mobile-theme-toggle')) {
+        document.getElementById('mobile-theme-toggle').checked = isDark;
+      }
+      // Agregar event listeners a los toggles
+      document.getElementById('theme-toggle').addEventListener('change', toggleDarkMode);
+      if (document.getElementById('mobile-theme-toggle')) {
+        document.getElementById('mobile-theme-toggle').addEventListener('change', toggleDarkMode);
+      }
+    });
+  </script>
+</body>
+</html>
